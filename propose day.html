@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Propose Day ❤️</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #ff758c, #ff7eb3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    overflow: hidden;
+    padding: 20px;
+}
+
+.card {
+    background: white;
+    padding: 30px;
+    border-radius: 22px;
+    max-width: 580px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+    animation: fadeIn 1.5s ease;
+    z-index: 2;
+}
+
+h1 {
+    color: #ff3366;
+    font-size: 26px;
+    margin-bottom: 8px;
+}
+
+.name {
+    font-weight: bold;
+    color: #ff3366;
+}
+
+p {
+    font-size: 17px;
+    color: #333;
+    line-height: 1.7;
+    white-space: pre-wrap;
+}
+
+button {
+    margin: 10px 8px;
+    padding: 12px 26px;
+    border: none;
+    border-radius: 30px;
+    background: #ff3366;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+button:hover {
+    background: #ff0055;
+}
+
+#response {
+    margin-top: 15px;
+    font-weight: bold;
+    color: #ff3366;
+}
+
+/* Floating hearts */
+.heart {
+    position: absolute;
+    color: red;
+    font-size: 22px;
+    animation: float 5s infinite;
+}
+
+/* Ring animation */
+.ring {
+    position: fixed;
+    font-size: 90px;
+    animation: popRing 1.2s ease forwards;
+    z-index: 999;
+}
+
+/* Fireworks */
+.firework {
+    position: fixed;
+    font-size: 30px;
+    animation: explode 1.5s ease forwards;
+    z-index: 999;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes float {
+    from { transform: translateY(100vh); opacity: 1; }
+    to { transform: translateY(-10vh); opacity: 0; }
+}
+
+@keyframes popRing {
+    0% { transform: scale(0); opacity: 0; }
+    50% { transform: scale(1.4); opacity: 1; }
+    100% { transform: scale(1); opacity: 0; }
+}
+
+@keyframes explode {
+    from { transform: scale(0); opacity: 1; }
+    to { transform: scale(3); opacity: 0; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- Arctic Monkeys Music -->
+<iframe id="ytMusic"
+src="https://www.youtube.com/embed/6366dxFf-Os?enablejsapi=1"
+allow="autoplay" style="display:none;"></iframe>
+
+<!-- YES SOUND -->
+<audio id="yesSound">
+  <source src="yes.mp3" type="audio/mpeg">
+</audio>
+
+<!-- NO SOUND -->
+<audio id="noSound">
+  <source src="no.mp3" type="audio/mpeg">
+</audio>
+
+<div class="card">
+
+<h1>Happy Propose Day ❤️</h1>
+<p><span class="name">Impana</span> 💐 — from <span class="name">Hrushikesh</span></p>
+
+<p>
+okok its almost the end of propose day but lma i dont think a day or even a week would be enough to fully express what i feel towards you. happy proposed day dear kappe mata😁😁💐(sorry I haven't proposed to anyone like this either so forgive if any mistakes).  
+and yes i do accept your proposal dear, you mean so much to me. Even the thought of rejecting you (hahha i cant lma cuz we're already glued together) is a thing I'll never consider. good day and good night hehehe i love you (is this how its done on propose day?)  
+you are a very adorable and ethereal person and i have come to the realisation that i cant live without you. i would appreciate it if  you accepted my proposal too (we have been not at all dating for 7+months now haha). theres so much i wanna say but not yet 😁5 more days to go. bye love you  
+</p>
+
+<button onclick="sayYes()">YES 💖</button>
+<button onclick="sayNo()">NO 🙃</button>
+
+<p id="response"></p>
+
+<button onclick="playMusic()">Play Music 🎵</button>
+
+</div>
+
+<script>
+function playMusic() {
+  document.getElementById("ytMusic").contentWindow.postMessage(
+    '{"event":"command","func":"playVideo","args":""}', '*'
+  );
+}
+
+function sayYes() {
+  document.getElementById("yesSound").play();
+  document.getElementById("response").innerText =
+  "HELL YEAH 😭❤️ Hrushikesh + Impana FOREVER 💍🔥";
+
+  // Ring animation
+  let ring = document.createElement("div");
+  ring.className = "ring";
+  ring.innerHTML = "💍";
+  ring.style.top = "40%";
+  ring.style.left = "50%";
+  document.body.appendChild(ring);
+  setTimeout(() => ring.remove(), 1200);
+
+  // Fireworks burst
+  for (let i = 0; i < 12; i++) {
+    let firework = document.createElement("div");
+    firework.className = "firework";
+    firework.innerHTML = "🎆";
+    firework.style.left = Math.random() * 100 + "vw";
+    firework.style.top = Math.random() * 100 + "vh";
+    document.body.appendChild(firework);
+    setTimeout(() => firework.remove(), 1500);
+  }
+}
+
+function sayNo() {
+  document.getElementById("noSound").play();
+  document.getElementById("response").innerText =
+  "OH NO 💀 but NO is not accepted 😌❤️";
+}
+
+// Floating hearts background
+for (let i = 0; i < 30; i++) {
+    let heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = (Math.random() * 3 + 3) + "s";
+    document.body.appendChild(heart);
+}
+</script>
+
+</body>
+</html>
